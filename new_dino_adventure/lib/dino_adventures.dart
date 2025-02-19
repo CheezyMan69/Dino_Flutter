@@ -8,11 +8,11 @@ import 'package:new_dino_adventure/levels/level.dart';
 class DinoAdventures extends FlameGame {
   
   //@overide
-  //Color backgroundColor() => const Color();
+  //Color backgroundColor() => const Color(); 
   
   late final CameraComponent cam;
 
-  final world = Level();
+  final world = Level(levelName: 'Level1');
 
   @override
   FutureOr<void> onLoad() async{

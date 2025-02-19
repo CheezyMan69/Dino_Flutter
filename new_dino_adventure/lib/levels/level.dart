@@ -6,12 +6,14 @@ import 'package:new_dino_adventure/actors/player.dart';
 //import 'package:tiled/tiled.dart';
 
 class Level extends World{
+  final String levelName;
+  Level({required this.levelName}); 
   late TiledComponent level;
   
   @override
   FutureOr<void> onLoad() async{
     
-    level = await TiledComponent.load('Level2.tmx', Vector2(16, 16));
+    level = await TiledComponent.load('$levelName.tmx', Vector2(16, 16));
 
     add(level);
 
