@@ -7,7 +7,7 @@ enum PlayerState {idle, running}
 
 class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventures>{
   String character;
-  Player({required this.character});
+  Player({position, required this.character}) : super(position: position);
   late final SpriteAnimation idleAni;
   late final SpriteAnimation runAni;
   final double stepTime = 0.12;

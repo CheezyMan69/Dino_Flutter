@@ -11,7 +11,7 @@ class Level extends World{
   @override
   FutureOr<void> onLoad() async{
     
-    level = await TiledComponent.load('TutorialV2.tmx', Vector2(16, 16));
+    level = await TiledComponent.load('Level2.tmx', Vector2(16, 16));
 
     add(level);
 
@@ -20,7 +20,7 @@ class Level extends World{
     for(final spawnPoint in spawnPointsLayer!.objects) {
       switch (spawnPoint.class_) {
         case 'Player':
-        final player = Player(character: 'doux');
+        final player = Player(character: 'mort', position: Vector2(spawnPoint.x, spawnPoint.y));
         add(player);
           
           break;
