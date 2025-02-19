@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.11.2" name="Grassland_entities (16 x 16)" tilewidth="16" tileheight="16" tilecount="140" columns="20">
- <image source="Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" width="320" height="112"/>
+ <image source="../images/1 - Grassland/Grassland_entities (16 x 16).png" width="320" height="112"/>
 </tileset>
