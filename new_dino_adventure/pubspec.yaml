@@ -68,6 +68,7 @@ flutter:
     - assets/images/Background/
     - assets/images/5 - Misc. universal tiles/
     - assets/images/6 - Characters/
+    - assets/images/11 - HUD/
     - assets/tiles/
 
   # An image asset can refer to one or more resolution-specific "variants", see
