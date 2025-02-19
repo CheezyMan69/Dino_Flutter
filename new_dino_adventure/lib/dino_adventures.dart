@@ -2,29 +2,80 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:new_dino_adventure/levels/level.dart';
+import 'package:new_dino_adventure/actors/player.dart';
+import 'package:flutter/painting.dart';
 
-class DinoAdventures extends FlameGame {
+class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks{
   
   //@overide
   //Color backgroundColor() => const Color(); 
   
   late final CameraComponent cam;
-
-  final world = Level(levelName: 'Level1');
+  Player player = Player(character: 'mort');
+  late JoystickComponent joystick;
+  bool showJoystick = false;
 
   @override
   FutureOr<void> onLoad() async{
 
     await images.loadAllImages(); //loads everying in to cache (prepare to crash)
+
+    final world = Level( player: player,levelName: 'Level1');
     
     cam = CameraComponent.withFixedResolution(
-      world: world, width: 2400,height: 320);
+      world: world, width: 240,height: 320);
     cam.viewfinder.anchor = Anchor.topLeft;
     
     addAll([cam, world]);
 
+    if (showJoystick){
+    addJoystick();
+    }
+
     return super.onLoad();
+  }
+
+  @override
+  void update(double dt) {
+    if (showJoystick){
+    updateJoystick();
+    }
+    super.update(dt);
+  }
+  
+  void addJoystick() {
+    joystick = JoystickComponent(
+      knob: SpriteComponent(
+        sprite: Sprite(images.fromCache('11 - HUD/Knob.png')),
+      ),
+      background: SpriteComponent(
+        sprite:Sprite(images.fromCache('11 - HUD/Joystick.png')),
+      ),
+
+    margin: const EdgeInsets.only(left: 32, bottom: 32),
+    );
+    add(joystick);
+  }
+  
+  void updateJoystick() {
+    switch (joystick.direction) {
+      case JoystickDirection.left:
+      case JoystickDirection.upLeft:
+      case JoystickDirection.downLeft:
+        player.playerDirection = PlayerDirection.left;
+        break;
+      case JoystickDirection.right:
+      case JoystickDirection.upRight:
+      case JoystickDirection.downRight:
+        player.playerDirection = PlayerDirection.right;
+        break;  
+      default:
+      player.playerDirection = PlayerDirection.none;
+      break;
+    }
+
   }
 }
