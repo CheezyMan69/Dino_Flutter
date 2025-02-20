@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';

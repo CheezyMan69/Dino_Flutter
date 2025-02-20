@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'package:new_dino_adventure/components/collision_block.dart';
+import 'package:new_dino_adventure/components/player_hitbox.dart';
 import 'package:new_dino_adventure/components/utils.dart';
 import 'package:new_dino_adventure/dino_adventures.dart';
 
@@ -28,12 +30,22 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
   bool isOnGround = false;
   bool hasJumped = false;
   List<CollisionBlock> collisionBlocks = [];
+  /*PlayerHitbox hitbox = PlayerHitbox(
+      offsetX: 4,
+      offsetY: 4,
+      width: 20,
+      height: 20
+      );*/
 
 
   @override
   FutureOr<void> onLoad() {
     _loadAllAni();
     debugMode = true;
+    /*add(RectangleHitbox(
+      position: Vector2(hitbox.offsetX, hitbox.offsetY),
+      size: Vector2(hitbox.width, hitbox.height),
+    ));*/
     return super.onLoad();
   }
 
