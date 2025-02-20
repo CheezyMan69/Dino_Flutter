@@ -24,14 +24,15 @@ class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCa
     final world = Level( player: player,levelName: 'Level1');
     
     cam = CameraComponent.withFixedResolution(
-      world: world, width: 240,height: 320);
-    cam.viewfinder.anchor = Anchor.topLeft;
+      world: world, width: 480,height: 320);
+    //cam.viewfinder.anchor = Anchor.topLeft;
     
     addAll([cam, world]);
 
     if (showJoystick){
     addJoystick();
     }
+    cam.follow(player);
 
     return super.onLoad();
   }

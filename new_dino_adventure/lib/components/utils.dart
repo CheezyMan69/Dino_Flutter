@@ -10,7 +10,7 @@ bool checkColl(player, block){
   final blockHeight = block.height;
 
   final fixedX = player.scale.x < 0 ? playerX - playerWidth: playerX;
-  final fixedY = block.isPlatfrom ? playerY + playerHeight : playerY;
+  final fixedY = block.isPlatform ? playerY + playerHeight : playerY;
 
   return (
     fixedY < blockY + blockHeight && //if player y is less that bottom of block
