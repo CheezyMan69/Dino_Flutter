@@ -91,7 +91,7 @@ class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCa
   
   void _loadLevel() {
     Future.delayed(const Duration(seconds: 1),(){
-    Level world = Level(levelName: levelNames[currentLevelIndex],player: player);
+    Level world = Level(levelName: levelNames[currentLevelIndex],player: player..priority=10);
 
     cam = CameraComponent.withFixedResolution(
     world: world, width: 480,height: 320,);

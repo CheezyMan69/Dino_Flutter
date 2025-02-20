@@ -50,7 +50,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
 
 
     startPos = Vector2(position.x, position.y);
-    debugMode = true;
+    debugMode = false;
     /*add(RectangleHitbox(
       position: Vector2(hitbox.offsetX, hitbox.offsetY),
       size: Vector2(hitbox.width, hitbox.height),

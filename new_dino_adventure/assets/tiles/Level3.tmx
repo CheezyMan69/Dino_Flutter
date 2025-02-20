@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="76">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="125">
  <tileset firstgid="1" source="_Complete_static_BG_(288 x 208)Tropic.tsx"/>
  <tileset firstgid="235" source="House (112 x 96).tsx"/>
  <tileset firstgid="325" source="Terrain (16 x 16).tsx"/>
@@ -22,6 +22,56 @@
  </layer>
  <objectgroup id="4" name="Spawnpoints">
   <object id="1" name="Player" type="Player" x="32" y="128" width="24" height="24"/>
+  <object id="76" type="Spike" x="112" y="208" width="16" height="16"/>
+  <object id="77" type="Spike" x="128" y="208" width="16" height="16"/>
+  <object id="78" type="Spike" x="144" y="208" width="16" height="16"/>
+  <object id="79" type="Spike" x="512" y="192" width="16" height="16"/>
+  <object id="80" type="Spike" x="384" y="304" width="16" height="16"/>
+  <object id="81" type="Spike" x="416" y="304" width="16" height="16"/>
+  <object id="82" type="Spike" x="448" y="304" width="16" height="16"/>
+  <object id="83" type="Spike" x="480" y="304" width="16" height="16"/>
+  <object id="84" type="Spike" x="336" y="304" width="16" height="16"/>
+  <object id="85" type="Spike" x="704" y="304" width="16" height="16"/>
+  <object id="86" type="Spike" x="720" y="304" width="16" height="16"/>
+  <object id="87" type="Spike" x="752" y="304" width="16" height="16"/>
+  <object id="88" type="Spike" x="768" y="304" width="16" height="16"/>
+  <object id="89" type="Spike" x="832" y="304" width="16" height="16"/>
+  <object id="90" type="Spike" x="880" y="304" width="16" height="16"/>
+  <object id="91" type="Spike" x="896" y="304" width="16" height="16"/>
+  <object id="92" type="Spike" x="912" y="224" width="16" height="16"/>
+  <object id="93" type="Spike" x="928" y="224" width="16" height="16"/>
+  <object id="94" type="Spike" x="944" y="224" width="16" height="16"/>
+  <object id="95" type="Spike" x="1056" y="224" width="16" height="16"/>
+  <object id="96" type="Spike" x="1344" y="240" width="16" height="16"/>
+  <object id="97" type="Spike" x="1360" y="240" width="16" height="16"/>
+  <object id="98" type="Spike" x="1440" y="224" width="16" height="16"/>
+  <object id="99" type="Spike" x="1456" y="224" width="16" height="16"/>
+  <object id="100" type="Spike" x="1472" y="224" width="16" height="16"/>
+  <object id="101" type="Spike" x="1600" y="144" width="16" height="16"/>
+  <object id="102" type="Spike" x="1968" y="224" width="16" height="16"/>
+  <object id="103" type="Spike" x="1984" y="224" width="16" height="16"/>
+  <object id="104" type="Spike" x="2016" y="208" width="16" height="16"/>
+  <object id="75" type="Checkpoint" x="2288" y="64" width="112" height="96"/>
+  <object id="105" type="Spike" x="352" y="304" width="16" height="16"/>
+  <object id="106" type="Spike" x="368" y="304" width="16" height="16"/>
+  <object id="107" type="Spike" x="400" y="304" width="16" height="16"/>
+  <object id="108" type="Spike" x="400" y="304" width="16" height="16"/>
+  <object id="109" type="Spike" x="432" y="304" width="16" height="16"/>
+  <object id="110" type="Spike" x="464" y="304" width="16" height="16"/>
+  <object id="111" type="Spike" x="496" y="304" width="16" height="16"/>
+  <object id="112" type="Spike" x="512" y="304" width="16" height="16"/>
+  <object id="113" type="Spike" x="528" y="304" width="16" height="16"/>
+  <object id="114" type="Spike" x="320" y="304" width="16" height="16"/>
+  <object id="115" type="Spike" x="288" y="304" width="16" height="16"/>
+  <object id="116" type="Spike" x="272" y="304" width="16" height="16"/>
+  <object id="117" type="Spike" x="304" y="304" width="16" height="16"/>
+  <object id="118" type="Spike" x="736" y="304" width="16" height="16"/>
+  <object id="119" type="Spike" x="848" y="304" width="16" height="16"/>
+  <object id="120" type="Spike" x="864" y="304" width="16" height="16"/>
+  <object id="121" type="Spike" x="1184" y="304" width="16" height="16"/>
+  <object id="122" type="Spike" x="1200" y="304" width="16" height="16"/>
+  <object id="123" type="Spike" x="1232" y="304" width="16" height="16"/>
+  <object id="124" type="Spike" x="1248" y="304" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="5" name="Collisions">
   <object id="2" x="-0.333333" y="176" width="33.6667" height="14.6667"/>
@@ -87,13 +137,11 @@
   <object id="67" x="2096.33" y="191.333" width="22.3333" height="40"/>
   <object id="68" x="2112" y="175.333" width="165" height="28"/>
   <object id="69" x="2272.33" y="159.333" width="133" height="20.3333"/>
-  <object id="70" x="269.667" y="302.667" width="283.667" height="33.3333"/>
   <object id="71" x="621" y="309" width="1779.33" height="11"/>
   <object id="72" x="2392" y="-0.333333" width="8.66667" height="209.333"/>
   <object id="73" x="1424" y="192">
    <polygon points="0,0 80,0 64,32 0,32"/>
   </object>
   <object id="74" x="1424" y="192" width="64" height="16"/>
-  <object id="75" type="Checkpoint" x="2288" y="64" width="112" height="96"/>
  </objectgroup>
 </map>

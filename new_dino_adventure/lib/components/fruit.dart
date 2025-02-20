@@ -18,7 +18,7 @@ class Fruit extends SpriteAnimationComponent with HasGameRef<DinoAdventures>{
   
   @override
   FutureOr<void> onLoad() {
-    debugMode=true;
+    debugMode=false;
     //priority=-1;
 
     /*add(RectangleHitbox(

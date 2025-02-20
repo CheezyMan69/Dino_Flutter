@@ -12,7 +12,7 @@ class Spike extends SpriteAnimationComponent with HasGameRef<DinoAdventures>{
   @override
   FutureOr<void> onLoad() {
     add(RectangleHitbox());
-    debugMode = true;
+    debugMode = false;
     animation = SpriteAnimation.fromFrameData(game.images.fromCache('5 - Misc. universal tiles/spikes.png'), SpriteAnimationData.sequenced(amount: 1,stepTime: 0.12, textureSize: Vector2.all(16),));
     return super.onLoad();
   }

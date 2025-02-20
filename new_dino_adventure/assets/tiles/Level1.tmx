@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="119">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="135">
  <tileset firstgid="1" source="Flowers (16 x 16).tsx"/>
  <tileset firstgid="5" source="Background1.tsx"/>
  <tileset firstgid="6" source="grassland.tsx"/>
@@ -81,8 +81,6 @@
   <object id="56" name="Apple" type="Fruit" x="400" y="160" width="32" height="32"/>
   <object id="57" name="Apple" type="Fruit" x="400" y="128" width="32" height="32"/>
   <object id="58" type="Checkpoint" x="2272" y="96" width="112" height="96"/>
-  <object id="60" type="Spike" x="176" y="224" width="16" height="16"/>
-  <object id="61" type="Spike" x="208" y="224" width="16" height="16"/>
   <object id="64" type="Spike" x="336" y="288" width="16" height="16"/>
   <object id="65" type="Spike" x="352" y="288" width="16" height="16"/>
   <object id="66" type="Spike" x="368" y="288" width="16" height="16"/>
@@ -138,5 +136,21 @@
   <object id="116" type="Spike" x="1232" y="288" width="16" height="16"/>
   <object id="117" type="Spike" x="1248" y="288" width="16" height="16"/>
   <object id="118" type="Spike" x="1264" y="288" width="16" height="16"/>
+  <object id="119" type="Spike" x="1328" y="192" width="16" height="16"/>
+  <object id="120" type="Spike" x="1520" y="304" width="16" height="16"/>
+  <object id="121" type="Spike" x="1536" y="304" width="16" height="16"/>
+  <object id="122" type="Spike" x="1552" y="304" width="16" height="16"/>
+  <object id="123" type="Spike" x="1568" y="304" width="16" height="16"/>
+  <object id="124" type="Spike" x="1584" y="304" width="16" height="16"/>
+  <object id="125" type="Spike" x="1776" y="240" width="16" height="16"/>
+  <object id="126" type="Spike" x="1792" y="240" width="16" height="16"/>
+  <object id="127" type="Spike" x="1824" y="240" width="16" height="16"/>
+  <object id="128" type="Spike" x="1840" y="240" width="16" height="16"/>
+  <object id="129" type="Spike" x="1872" y="240" width="16" height="16"/>
+  <object id="130" type="Spike" x="1920" y="240" width="16" height="16"/>
+  <object id="131" type="Spike" x="1936" y="240" width="16" height="16"/>
+  <object id="132" type="Spike" x="2160" y="256" width="16" height="16"/>
+  <object id="133" type="Spike" x="2176" y="256" width="16" height="16"/>
+  <object id="134" type="Spike" x="2192" y="256" width="16" height="16"/>
  </objectgroup>
 </map>
