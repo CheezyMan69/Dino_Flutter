@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="72">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="73">
  <tileset firstgid="1" source="_Complete_static_BG_(288 x 208)Tropic.tsx"/>
  <tileset firstgid="235" source="House (112 x 96).tsx"/>
  <tileset firstgid="325" source="Terrain (16 x 16).tsx"/>
@@ -87,6 +87,7 @@
   <object id="69" x="2272.33" y="159.333" width="133" height="20.3333"/>
   <object id="70" x="269.667" y="302.667" width="283.667" height="33.3333"/>
   <object id="71" x="621" y="309" width="1779.33" height="11"/>
+  <object id="72" x="2392" y="-0.333333" width="8.66667" height="209.333"/>
  </objectgroup>
  <objectgroup id="4" name="Spawnpoints">
   <object id="1" name="Player" type="Player" x="32" y="128" width="24" height="24"/>
