@@ -6,33 +6,32 @@ import 'package:new_dino_adventure/levels/level.dart';
 import 'package:new_dino_adventure/actors/player.dart';
 import 'package:flutter/painting.dart';
 
-class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks{
+class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks,HasCollisionDetection{
   
   //@override
   //Color backgroundColor() => const Color(); 
   
-  late final CameraComponent cam;
+  late CameraComponent cam;
   Player player = Player(character: 'mort');
   late JoystickComponent joystick;
   bool showJoystick = false;
+  List<String> levelNames = ['Level1','Level2'];
+  int currentLevelIndex = 0;
 
   @override
   FutureOr<void> onLoad() async{
 
     await images.loadAllImages(); //loads everying in to cache (prepare to crash)
 
-    final world = Level( player: player,levelName: 'Level1');
-    
-    cam = CameraComponent.withFixedResolution(
-      world: world, width: 480,height: 320);
+    _loadLevel();
     //cam.viewfinder.anchor = Anchor.topLeft;
     
-    addAll([cam, world]);
+    
 
     if (showJoystick){
     addJoystick();
     }
-    cam.follow(player);
+  
 
     return super.onLoad();
   }
@@ -75,6 +74,29 @@ class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCa
         player.horiMove =0;
       break;
     }
+
+  }
+
+  void loadNextLevel() {
+    if(currentLevelIndex  < levelNames.length - 1){
+      currentLevelIndex++;
+      _loadLevel();
+      add(player);
+    } else{
+      //no more levels
+    }
+
+  }
+  
+  void _loadLevel() {
+    Future.delayed(const Duration(seconds: 1),(){
+    Level world = Level( player: player,levelName: levelNames[currentLevelIndex]);
+    
+    cam = CameraComponent.withFixedResolution(
+    world: world, width: 480,height: 320,);
+    addAll([cam, world]);
+    cam.follow(player);
+    });
 
   }
 }

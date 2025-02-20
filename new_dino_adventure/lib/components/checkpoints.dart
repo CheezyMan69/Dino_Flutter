@@ -13,13 +13,14 @@ class Checkpoint extends SpriteAnimationComponent with HasGameRef<DinoAdventures
   @override
   FutureOr<void> onLoad() {
     debugMode = true;
-    add(RectangleHitbox(collisionType: CollisionType.passive));
+    add(RectangleHitbox(position: Vector2(18,56),size: Vector2(12,8),collisionType: CollisionType.passive));
     
     animation = SpriteAnimation.fromFrameData(game.images.fromCache('5 - Misc. universal tiles/House (112 x 96).png'),
     SpriteAnimationData.sequenced(
     amount: 1,
     stepTime: 1,
-    textureSize: Vector2(112, 96)));
+    textureSize: Vector2(112, 96),
+    ));
   }
 
   @override

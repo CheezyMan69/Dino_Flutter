@@ -8,7 +8,7 @@ import 'package:new_dino_adventure/components/collision_block.dart';
 import 'package:new_dino_adventure/components/fruit.dart';
 //import 'package:tiled/tiled.dart';
 
-class Level extends World{
+class Level extends World with HasCollisionDetection{
   final String levelName;
   final Player player;
   Level({required this.levelName, required this.player}); 

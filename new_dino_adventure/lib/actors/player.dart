@@ -3,22 +3,24 @@ import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
+import 'package:new_dino_adventure/components/checkpoints.dart';
 import 'package:new_dino_adventure/components/collision_block.dart';
 import 'package:new_dino_adventure/components/custom_hitbox.dart';
 import 'package:new_dino_adventure/components/utils.dart';
 import 'package:new_dino_adventure/dino_adventures.dart';
 
-enum PlayerState {idle, running, jumping, falling}
+enum PlayerState {idle, running, jumping, falling, disappearing }
 
 
 
-class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventures>, KeyboardHandler{
+class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventures>, KeyboardHandler, CollisionCallbacks{
   String character;
   Player({position,  this.character = 'doux'}) : super(position: position);
   late final SpriteAnimation idleAni;
   late final SpriteAnimation runAni;
   late final SpriteAnimation jumpAni;
   late final SpriteAnimation fallAni;
+  late final SpriteAnimation disappearingAnimation;
   final double stepTime = 0.12;
 
   final double _gravity = 9.8;
@@ -47,6 +49,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
       position: Vector2(hitbox.offsetX, hitbox.offsetY),
       size: Vector2(hitbox.width, hitbox.height),
     ));*/
+    add(RectangleHitbox());
     return super.onLoad();
   }
 
@@ -78,11 +81,21 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
     return super.onKeyEvent(event, keysPressed);
   }
 
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if(other is Checkpoint && !reachedCheckpoint){
+      _reachedCheckpoint();
+      print('colliding');
+    } 
+    super.onCollision(intersectionPoints, other);
+  }
+
   void _loadAllAni(){
     idleAni = _spriteAni('idle', 3);
     runAni = _spriteAni('run', 7);
     jumpAni = _spriteAni('jump', 2);
     fallAni = _spriteAni('fall', 2);
+    
 
 
 
@@ -191,4 +204,22 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
       }
     }
   }
+  
+  void _reachedCheckpoint() {
+    reachedCheckpoint = true;
+
+    const reachedCheckpointDuration = Duration(milliseconds: 350);
+    Future.delayed(reachedCheckpointDuration,() {
+      reachedCheckpoint = false;
+      position = Vector2.all(-640);
+
+      const waitToChangeDuration = Duration(seconds: 3);
+      Future.delayed(waitToChangeDuration, (){
+        game.loadNextLevel();
+      });
+    });
+  }
+
+
+  
 }
