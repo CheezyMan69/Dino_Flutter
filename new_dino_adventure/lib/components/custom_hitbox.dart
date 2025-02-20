@@ -1,10 +1,10 @@
-class PlayerHitbox {
+class CustomHitbox {
   final double offsetX;
   final double offsetY;
   final width;
   final height;
 
-  PlayerHitbox({
+  CustomHitbox({
     required this.offsetX,
     required this.offsetY,
     required this.width,

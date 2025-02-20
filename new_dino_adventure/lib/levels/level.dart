@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:new_dino_adventure/actors/player.dart';
+import 'package:new_dino_adventure/components/checkpoints.dart';
 import 'package:new_dino_adventure/components/collision_block.dart';
 import 'package:new_dino_adventure/components/fruit.dart';
 //import 'package:tiled/tiled.dart';
@@ -45,6 +46,14 @@ class Level extends World{
             size: Vector2(spawnPoint.width, spawnPoint.height),
           );
           add(fruit);
+          break;
+          case 'Checkpoint':
+          final checkpoint = Checkpoint(
+            position: Vector2(spawnPoint.x, spawnPoint.y),
+            size: Vector2(spawnPoint.width, spawnPoint.height),
+          );
+          add(checkpoint);
+          break;
           default:
         }
 
