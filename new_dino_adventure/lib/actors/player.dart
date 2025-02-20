@@ -6,7 +6,7 @@ import 'package:new_dino_adventure/dino_adventures.dart';
 
 enum PlayerState {idle, running}
 
-enum PlayerDirection {left, right, none}
+
 
 class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventures>, KeyboardHandler{
   String character;
@@ -15,10 +15,10 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
   late final SpriteAnimation runAni;
   final double stepTime = 0.12;
 
-  PlayerDirection playerDirection = PlayerDirection.none;
+  double horiMove = 0;
   double moveSpeed = 100;
   Vector2 velocity = Vector2.zero();
-  bool isRight = true;
+
 
   @override
   FutureOr<void> onLoad() {
@@ -29,24 +29,21 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
   @override
   void update(double dt) {
     _updatePlayerMovement(dt);
+    _updatePlayerState();
     super.update(dt);
   }
 
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    final isLeftKeyPressed = keysPressed.contains(LogicalKeyboardKey.keyA) || keysPressed.contains(LogicalKeyboardKey.arrowLeft);
-    final isRightKeyPressed = keysPressed.contains(LogicalKeyboardKey.keyD) || keysPressed.contains(LogicalKeyboardKey.arrowRight);
+    horiMove = 0;
+    final isLeftKeyPressed = keysPressed.contains(LogicalKeyboardKey.keyA) || 
+      keysPressed.contains(LogicalKeyboardKey.arrowLeft);
+    final isRightKeyPressed = keysPressed.contains(LogicalKeyboardKey.keyD) || 
+      keysPressed.contains(LogicalKeyboardKey.arrowRight);
 
-    if(isLeftKeyPressed && isRightKeyPressed) {
-      playerDirection = PlayerDirection.none;
-    } else if(isLeftKeyPressed){
-      playerDirection = PlayerDirection.left;
-    } else if(isRightKeyPressed){
-      playerDirection = PlayerDirection.right;
-    } else {
-      playerDirection = PlayerDirection.none;
-    }
-    
+    horiMove+= isLeftKeyPressed ? -1 : 0;
+    horiMove+= isRightKeyPressed ? 1 : 0;
+
     return super.onKeyEvent(event, keysPressed);
   }
 
@@ -73,31 +70,20 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
   }
   
   void _updatePlayerMovement(double dt) {
-    double dirx = 0.0;
-    switch (playerDirection) {
-      case PlayerDirection.left:
-        if(isRight) {
-          flipHorizontallyAroundCenter();
-          isRight = false;
-        }
-        current = PlayerState.running;
-        dirx -= moveSpeed;
-        break;
-      case PlayerDirection.right:
-        if(!isRight){
-          flipHorizontallyAroundCenter();
-          isRight = true;
-        }
-        current = PlayerState.running;
-        dirx += moveSpeed;
-        break;
-      case PlayerDirection.none:
-        current = PlayerState.idle;
-        break;
-      default:
+    velocity.x = horiMove * moveSpeed;
+    position.x += velocity.x * dt;
+  }
+  
+  void _updatePlayerState() {
+    PlayerState playerState = PlayerState.idle;
+    if(velocity.x < 0 && scale.x > 0){
+      flipHorizontallyAroundCenter();
+    } else if(velocity.x > 0 && scale.x <0){
+      flipHorizontallyAroundCenter();
     }
 
-    velocity = Vector2(dirx, 0.0);
-    position += velocity * dt;
+    if(velocity.x > 0 || velocity.x < 0) playerState = PlayerState.running;
+    
+    current = playerState;
   }
 }
