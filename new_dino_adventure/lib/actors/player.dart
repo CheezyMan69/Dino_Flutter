@@ -22,7 +22,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
   final double stepTime = 0.12;
 
   final double _gravity = 9.8;
-  final double _jumpForce = 250;
+  final double _jumpForce = 400; // wonky
   final double _terminalVelocity = 300;
   double horiMove = 0;
   double moveSpeed = 100;

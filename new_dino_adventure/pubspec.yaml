@@ -70,6 +70,7 @@ flutter:
     - assets/images/6 - Characters/
     - assets/images/11 - HUD/
     - assets/tiles/
+    - assets/images/7 - Other/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
