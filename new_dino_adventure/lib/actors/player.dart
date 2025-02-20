@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:new_dino_adventure/components/checkpoints.dart';
 import 'package:new_dino_adventure/components/collision_block.dart';
 import 'package:new_dino_adventure/components/custom_hitbox.dart';
+import 'package:new_dino_adventure/components/spike.dart';
 import 'package:new_dino_adventure/components/utils.dart';
 import 'package:new_dino_adventure/dino_adventures.dart';
 
@@ -24,10 +25,11 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
   final double stepTime = 0.12;
 
   final double _gravity = 9.8;
-  final double _jumpForce = 400; // wonky
+  final double _jumpForce = 250; // wonky
   final double _terminalVelocity = 300;
   double horiMove = 0;
   double moveSpeed = 100;
+  Vector2 startPos = Vector2.zero();
   Vector2 velocity = Vector2.zero();
   bool isOnGround = false;
   bool hasJumped = false;
@@ -43,13 +45,16 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
 
   @override
   FutureOr<void> onLoad() {
+    add(RectangleHitbox());
     _loadAllAni();
+
+
+    startPos = Vector2(position.x, position.y);
     debugMode = true;
     /*add(RectangleHitbox(
       position: Vector2(hitbox.offsetX, hitbox.offsetY),
       size: Vector2(hitbox.width, hitbox.height),
     ));*/
-    add(RectangleHitbox());
     return super.onLoad();
   }
 
@@ -86,9 +91,14 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
     if(other is Checkpoint && !reachedCheckpoint){
       _reachedCheckpoint();
       print('colliding');
-    } 
+      }
+    if(other is Spike) _respawn();
+
+   
     super.onCollision(intersectionPoints, other);
   }
+
+
 
   void _loadAllAni(){
     idleAni = _spriteAni('idle', 3);
@@ -220,6 +230,10 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
     });
   }
 
+  void _respawn() {
+    position = startPos;
+  }
 
   
+
 }

@@ -15,7 +15,7 @@ class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCa
   Player player = Player(character: 'mort');
   late JoystickComponent joystick;
   bool showJoystick = false;
-  List<String> levelNames = ['Level1','Level2'];
+  List<String> levelNames = ['Level1','Level2','Level3','Level4','Level5','Level6','Level7','End'];
   int currentLevelIndex = 0;
 
   @override
@@ -80,8 +80,9 @@ class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCa
   void loadNextLevel() {
     if(currentLevelIndex  < levelNames.length - 1){
       currentLevelIndex++;
+
       _loadLevel();
-      add(player);
+
     } else{
       //no more levels
     }
@@ -90,11 +91,11 @@ class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCa
   
   void _loadLevel() {
     Future.delayed(const Duration(seconds: 1),(){
-    Level world = Level( player: player,levelName: levelNames[currentLevelIndex]);
-    
+    Level world = Level(levelName: levelNames[currentLevelIndex],player: player);
+
     cam = CameraComponent.withFixedResolution(
     world: world, width: 480,height: 320,);
-    addAll([cam, world]);
+    addAll([world,cam]);
     cam.follow(player);
     });
 

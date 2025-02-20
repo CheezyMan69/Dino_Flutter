@@ -6,6 +6,7 @@ import 'package:new_dino_adventure/actors/player.dart';
 import 'package:new_dino_adventure/components/checkpoints.dart';
 import 'package:new_dino_adventure/components/collision_block.dart';
 import 'package:new_dino_adventure/components/fruit.dart';
+import 'package:new_dino_adventure/components/spike.dart';
 //import 'package:tiled/tiled.dart';
 
 class Level extends World with HasCollisionDetection{
@@ -54,6 +55,12 @@ class Level extends World with HasCollisionDetection{
           );
           add(checkpoint);
           break;
+          case 'Spike':
+          final spike = Spike(
+            position: Vector2(spawnPoint.x, spawnPoint.y),
+            size: Vector2(spawnPoint.width, spawnPoint.height),
+          );
+          add(spike);
           default:
         }
 
