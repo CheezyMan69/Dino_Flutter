@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="48">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="50">
  <tileset firstgid="1" source="_Complete_static_BG_(288 x 208)Tropic.tsx"/>
  <tileset firstgid="235" source="Terrain (16 x 16).tsx"/>
  <tileset firstgid="405" source="grassland.tsx"/>
@@ -37,7 +37,6 @@
   <object id="14" x="608" y="208" width="16" height="16"/>
   <object id="15" x="656" y="192" width="16" height="16"/>
   <object id="16" x="704" y="176" width="16" height="16"/>
-  <object id="17" x="672" y="144" width="16" height="16"/>
   <object id="18" x="720" y="128" width="16" height="16"/>
   <object id="19" x="768" y="112" width="16" height="16"/>
   <object id="20" x="816" y="96" width="16" height="16"/>
@@ -68,6 +67,9 @@
   <object id="45" x="2384" y="0" width="16" height="192"/>
   <object id="46" x="0" y="0" height="192"/>
   <object id="47" x="48" y="304" width="2048" height="16"/>
+  <object id="49" x="672" y="144">
+   <polygon points="0,0 16,0 0,16"/>
+  </object>
  </objectgroup>
  <objectgroup id="5" name="Spawnpoints">
   <object id="1" name="Player" type="Player" x="16" y="144" width="24" height="24"/>
