@@ -4,6 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:new_dino_adventure/actors/player.dart';
 import 'package:new_dino_adventure/components/collision_block.dart';
+import 'package:new_dino_adventure/components/fruit.dart';
 //import 'package:tiled/tiled.dart';
 
 class Level extends World{
@@ -19,7 +20,15 @@ class Level extends World{
     level = await TiledComponent.load('$levelName.tmx', Vector2(16, 16));
 
     add(level);
+    _spawningObjects();
+    _addCollisions();
 
+    return super.onLoad();
+   }
+
+    void _spawningObjects() {
+    
+    
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('Spawnpoints');
 
     if(spawnPointsLayer != null){
@@ -28,14 +37,22 @@ class Level extends World{
           case 'Player':
           player.position = Vector2(spawnPoint.x, spawnPoint.y);
           add(player);
-            
-            break;
+          break;
+          case 'Fruit':
+          final fruit = Fruit(
+            fruit: spawnPoint.name,
+            position: Vector2(spawnPoint.x, spawnPoint.y),
+            size: Vector2(spawnPoint.width, spawnPoint.height),
+          );
+          add(fruit);
           default:
         }
 
       }
     }
+    }
 
+    void _addCollisions(){
     final collLayer = level.tileMap.getLayer<ObjectGroup>('Collisions');
 
     if(collLayer != null){
@@ -57,6 +74,5 @@ class Level extends World{
       }
     }
     player.collisionBlocks = collisionBlocks;
-    return super.onLoad();
   }
 }

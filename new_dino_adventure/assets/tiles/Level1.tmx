@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="51">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="58">
  <tileset firstgid="1" source="Flowers (16 x 16).tsx"/>
  <tileset firstgid="5" source="Background1.tsx"/>
  <tileset firstgid="6" source="grassland.tsx"/>
@@ -24,6 +24,11 @@
  </layer>
  <objectgroup id="4" name="Spawnpoints">
   <object id="1" name="Player" type="Player" x="48" y="160" width="24" height="24"/>
+  <object id="51" name="Apple" type="Fruit" x="288" y="160" width="32" height="32"/>
+  <object id="52" name="Bananas" type="Fruit" x="112" y="160" width="32" height="32"/>
+  <object id="55" name="Bananas" type="Fruit" x="112" y="128" width="32" height="32"/>
+  <object id="56" name="Apple" type="Fruit" x="400" y="160" width="32" height="32"/>
+  <object id="57" name="Apple" type="Fruit" x="400" y="128" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="5" name="Collisions">
   <object id="3" x="0" y="192" width="160" height="64"/>
