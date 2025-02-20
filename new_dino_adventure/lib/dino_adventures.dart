@@ -10,7 +10,7 @@ import 'package:flutter/painting.dart';
 
 class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCallbacks{
   
-  //@overide
+  //@override
   //Color backgroundColor() => const Color(); 
   
   late final CameraComponent cam;
@@ -26,7 +26,7 @@ class DinoAdventures extends FlameGame with HasKeyboardHandlerComponents, DragCa
     final world = Level( player: player,levelName: 'Level1');
     
     cam = CameraComponent.withFixedResolution(
-      world: world, width: 240,height: 320);
+      world: world, width: 2400,height: 320);
     cam.viewfinder.anchor = Anchor.topLeft;
     
     addAll([cam, world]);

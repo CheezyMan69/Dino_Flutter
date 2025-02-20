@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
+import 'package:new_dino_adventure/components/collision_block.dart';
+import 'package:new_dino_adventure/components/utils.dart';
 import 'package:new_dino_adventure/dino_adventures.dart';
 
 enum PlayerState {idle, running}
@@ -18,11 +20,13 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
   double horiMove = 0;
   double moveSpeed = 100;
   Vector2 velocity = Vector2.zero();
+  List<CollisionBlock> collisionBlocks = [];
 
 
   @override
   FutureOr<void> onLoad() {
     _loadAllAni();
+    debugMode = true;
     return super.onLoad();
   }
 
@@ -30,6 +34,7 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
   void update(double dt) {
     _updatePlayerMovement(dt);
     _updatePlayerState();
+    _checkHoriColl();
     super.update(dt);
   }
 
@@ -85,5 +90,22 @@ class Player extends SpriteAnimationGroupComponent with HasGameRef<DinoAdventure
     if(velocity.x > 0 || velocity.x < 0) playerState = PlayerState.running;
     
     current = playerState;
+  }
+  
+  void _checkHoriColl() {
+    for(final block in collisionBlocks){
+      if(!block.isPlatform){
+        if(checkColl(this, block)){
+          if(velocity.x > 0){
+            velocity.x = 0;
+            position.x = block.x - width;
+          }
+          if (velocity.x < 0){
+            velocity.x = 0;
+            position.x = block.x + block.width + width;
+          }
+        }
+      }
+    }
   }
 }

@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:new_dino_adventure/actors/player.dart';
+import 'package:new_dino_adventure/components/collision_block.dart';
 //import 'package:tiled/tiled.dart';
 
 class Level extends World{
@@ -10,6 +12,7 @@ class Level extends World{
   final Player player;
   Level({required this.levelName, required this.player}); 
   late TiledComponent level;
+  List<CollisionBlock> collisionBlocks = [];
   
   @override
   FutureOr<void> onLoad() async{
@@ -20,17 +23,41 @@ class Level extends World{
 
     final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>('Spawnpoints');
 
-    for(final spawnPoint in spawnPointsLayer!.objects) {
-      switch (spawnPoint.class_) {
-        case 'Player':
-        player.position = Vector2(spawnPoint.x, spawnPoint.y);
-        add(player);
-          
-          break;
-        default:
-      }
+    if(spawnPointsLayer != null){
+      for(final spawnPoint in spawnPointsLayer.objects) {
+        switch (spawnPoint.class_) {
+          case 'Player':
+          player.position = Vector2(spawnPoint.x, spawnPoint.y);
+          add(player);
+            
+            break;
+          default:
+        }
 
+      }
     }
+
+    final collLayer = level.tileMap.getLayer<ObjectGroup>('Collisions');
+
+    if(collLayer != null){
+      for(final coll in collLayer.objects){
+        switch(coll.class_){
+          case 'Platform':
+            final platform = CollisionBlock(position: Vector2(coll.x, coll.y),
+            size: Vector2(coll.width, coll.height),
+            isPlatform: true);
+            collisionBlocks.add(platform);
+            add(platform);
+            break;
+          default:
+          final block = CollisionBlock(position: Vector2(coll.x, coll.y),
+          size: Vector2(coll.width, coll.height));
+          collisionBlocks.add(block);
+          add(block);
+        }
+      }
+    }
+    player.collisionBlocks = collisionBlocks;
     return super.onLoad();
   }
 }
